@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gülcan’a Mektup 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffd6e0, #ffeac2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 90%;
+    }
+
+    .envelope-button {
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    .envelope-button img {
+      width: 140px;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-button:hover img {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 2.5em;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #444;
+      margin: 15px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+
+    .bitmoji {
+      margin-top: 30px;
+    }
+
+    .bitmoji img {
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #b2004d;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 2s ease-in;
+    }
+
+    .footer.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Zarf Tıklama Alanı -->
+    <div id="envelope" class="envelope-button" onclick="openLetter()">
+      <img src="https://i.pinimg.com/originals/89/57/4e/89574e2c67cd952e7e6c0d470a8b86f6.gif" alt="Tıkla Askim!">
+      <p><strong>Bir mektubun var Hamitten 💌</strong><br><small>(Tıklamak yasak değil 😄)</small></p>
+    </div>
+
+    <!-- Mektup Açıldıktan Sonra Gözükenler -->
+    <div id="messageArea" class="hidden">
+      <h1>Günaydın KALBİM'İN TEK SAHİBİ 💖</h1>
+      <p>Bugün senin gülüşünle başlasın...</p>
+      <button onclick="showMore()">Bana bir tık daha yakınlaş 😊</button>
+
+      <div id="more" class="hidden">
+        <p>Her sabah seninle uyanmak bir mucize gibi...</p>
+        <p>Gözlerin güneşim, sesin melodim gibi.</p>
+        <p>Seni çok seviyorum 💘</p>
+
+        <div class="bitmoji">
+          <img src="https://media.giphy.com/media/l3vR0Y9bY0WprvZna/giphy.gif" alt="Bitmoji">
+        </div>
+
+        <div class="footer" id="footer">
+          Sevgilin Hamit’e iyi bak 💌
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function openLetter() {
+      document.getElementById("envelope").classList.add("hidden");
+      document.getElementById("messageArea").classList.remove("hidden");
+    }
+
+    function showMore() {
+      const moreText = document.getElementById("more");
+      const footer = document.getElementById("footer");
+
+      if (moreText.classList.contains("hidden")) {
+        moreText.classList.remove("hidden");
+
+        setTimeout(() => {
+          footer.classList.add("show");
+        }, 2000);
+      }
+    }
+  </script>
+
+</body>
+</html>
